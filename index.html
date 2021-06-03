@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Materialize Compiled and Minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>BMS Weather Dashboard</title>
+</head>
+<body class="row">
+    <div class="title row center-align"><h1>Weather Dashboard</h1></div>
+    <div class="col s12 m5 l3">
+        <div>
+            <h2>Search for a City:</h2>
+            <textarea id="citySearch" class="valign-wrapper" placeholder="San Diego"></textarea>
+            <button id="search" class="waves-effect waves-light btn blue">Search</button>
+            <div style="background-color: black; height: .1em; width: 100%; margin: 1em auto;"></div>
+        </div>
+        <div id="history"></div>
+    </div>
+    <div class="col s12 m7 l9">
+        <div style="border: .1em solid black; padding: .5em;">
+            <h2 id="city">Today's Weather</h2>
+            <p id="temp">Temp: </p>
+            <p id="wind">Wind: </p>
+            <p id="hum">Humidity: </p>
+            <p id="UV">UV Index: </p>
+        </div>
+        <div>
+            <h3>5-Day Forecast:</h3>
+            <carousel>
+                <card id="day1"></card>
+                <card id="day2"></card>
+                <card id="day3"></card>
+                <card id="day4"></card>
+                <card id="day5"></card>
+            </carousel>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Materialize Compiled and Minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+</html>
