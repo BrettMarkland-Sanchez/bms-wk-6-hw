@@ -28,8 +28,11 @@ textarea {
 }
 
 .btn {
-    margin-top: 1em;
     width: 100%;
+}
+
+#search {
+    margin-top: 1em;
 }
 
 carousel {

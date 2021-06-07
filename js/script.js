@@ -1,50 +1,57 @@
-let city;
 let searchHistory = $('#history');
 const APIKey = 'a907d16219204ccff8dfbfc9285d5e56';
 let queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=';
 let citySearch = $('#citySearch');
 let search = $('#search');
+let city;
 let cityName = $('#city');
 let temp = $('#temp');
 let wind = $('#wind');
 let hum = $('#hum');
 let UV = $('#UV');
-let date = moment();
+let date = moment().format('L');
 
 search.click(function(){
     city = citySearch.val();
-    console.log(city);
-    getAPI(queryURL);
-    addCity();
-    loadCity();
+    getAPI(queryURL); 
 });
 
-function getAPI(queryURL){
-    fetch(queryURL+`${city}&appid=${APIKey}`)
-    .then(function (response) {
-        return response.json();
-      })
-      .then(function (data) {
-        localStorage.setItem(`${city}`, JSON.stringify(data));
-        console.log(data);
-      });
+function underscorify(city){
+  let cityKey = city.replace(/ /g,"_");
+  return cityKey;
 }
 
-function setUI(city){
-  cityName.val(`${city} ${date}`);
+function spacify(cityKey){
+  let city = cityKey.replace("_",/ /g);
+  return city;
+}
+
+function getAPI(queryURL){
+  fetch(queryURL+`${city}&appid=${APIKey}`)
+    .then(function(response){
+      if(!response.ok){
+        throw Error(response.statusText);
+      }
+      return response.json();
+    }).then(function(data) {
+        localStorage.setItem(`${underscorify(city)}`, JSON.stringify(data));
+        addCity();
+        setUI();
+      }).catch(function(error){
+        alert(error);
+      })
 }
 
 function addCity(){
-  searchHistory.append(`<button id="${city}" class="city waves-effect waves-light btn blue">${city}</button>`);
+  if($(`#${underscorify(city)}`).val() == null ){
+    searchHistory.append(`<button id="${underscorify(city)}" class="city waves-effect waves-light btn blue" style="margin-bottom: 1em;">${city}</button>`);
+  }
 }
 
-function loadCity(){
-  let cityArr = $('.city');
-  cityArr.forEach(element => {
-    element.click(function(){
-      // Load weather API values from JSON string in localStorage
-      setUI();
-    })
-  });
+function setUI(){
+  let data = JSON.parse(localStorage.getItem(`${underscorify(city)}`));
+  let icon = data.weather[0].icon;
+  let src = `http://openweathermap.org/img/wn/${icon}@2x.png`;
+  cityName.text(`${city} (${date})`);
+  cityName.append(`<img src=${src} style="height:2em; margin-bottom: -.5em;"/>`);
 }
-
