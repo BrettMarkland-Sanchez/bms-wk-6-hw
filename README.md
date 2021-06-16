@@ -2,7 +2,8 @@
 # Weather Dashboard
 This project uses the OpenWeather One Call API to display weather forecast information to the user.
 
-## Deployed Site: https://brettmarkland-sanchez.github.io/bms-wk-6-hw/
+## Site: https://brettmarkland-sanchez.github.io/bms-wk-6-hw/
+## Repo: https://github.com/BrettMarkland-Sanchez/bms-wk-6-hw
 
 ## Concept
 Using a city search textarea, the user is able to lookup the current weather and 5-day forecast for supported cities.
