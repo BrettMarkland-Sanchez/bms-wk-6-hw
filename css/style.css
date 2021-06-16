@@ -12,7 +12,14 @@ h2 {
 }
 
 h3 {
+    margin: 1rem 0 0 0;
     font-size: 2em;
+    font-weight: bold;
+}
+
+h4 {
+    margin-top: 0;
+    font-size: 1.5em;
     font-weight: bold;
 }
 
@@ -40,9 +47,26 @@ carousel {
 }
 
 card {
+    font-weight: bold;
+    color: #fff;
+    padding: 1em;
     float: left;
     height: 250px;
     width: 200px;
     margin: 1em;
+    margin-left: 0;
+    margin-right: 2em;
     background-color: steelblue;
+}
+
+#uviLabel {
+    display: inline;
+}
+
+#UV {
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    width: 3em;
+    border-radius: 5px;
 }
