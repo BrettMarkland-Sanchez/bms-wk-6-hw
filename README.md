@@ -1,4 +1,3 @@
-# bms-wk-6-hw
 # Weather Dashboard
 This project uses the OpenWeather One Call API to display weather forecast information to the user.
 
